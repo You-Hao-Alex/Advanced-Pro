@@ -1,0 +1,31 @@
+package ADP;
+
+public class participant {
+	 private String id;         
+	   private String name;   
+	   private int age;  
+	   private String state;
+	
+	   public String getID() { return id; }
+	  
+	   public String getName() { return name; }
+	 
+	   public int getAge() { return age; }
+	   
+	   public String getState() { return state; }
+	  
+	   public void setID(String id) { this.id = id; }
+	 
+	   public void setName(String name) { this.name = name; }
+	  
+	   public void setAge(int age) { this.age =age; }
+	   
+	   public void setState(String state) { this.state = state; }
+	   
+	   public void personInfo() {
+	      System.out.println("ID: " + id);
+	      System.out.println("Name: " + name);
+	      System.out.println("Age: " + age);
+	      System.out.println("State: " + state);
+}
+	   }
