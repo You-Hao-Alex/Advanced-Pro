@@ -2,10 +2,25 @@ package Game;
 import java.util.*;
 
 public class Swimming extends Games {
+	private String Referee;
+	private String sID;
 
-	public Swimming(int ID, String Referee, ArrayList<String> players) {
-		super(ID, Referee, players);
+	public Swimming(int ID) {
+		super(ID);
+		Referee = getReferee();
+		sID = getsID();
 	}
+	
+	public String getsID() {
+		if ( super.getID() < 10) {
+			sID = "S" + "0" + super.getID();
+		}
+		else {
+		sID = "S" + super.getID();
+		}
+		   return sID;
+		   }
+	
 	
 	public static void listplayers() {
 		int random;	
@@ -30,4 +45,6 @@ public class Swimming extends Games {
         	}
         }
 			  }
+
+
 }

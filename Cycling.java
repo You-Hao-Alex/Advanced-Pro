@@ -3,11 +3,24 @@ package Game;
 import java.util.ArrayList;
 
 public class Cycling extends Games{
-
-	public Cycling(int ID, String Referee, ArrayList<String> players) {
-		super(ID, Referee, players);
-		// TODO Auto-generated constructor stub
+	private String Referee;
+	private String sID;
+	
+	public Cycling(int ID) {
+		super(ID);
+		Referee = getReferee();
+		sID = getsID();
 	}
+	public String getsID() {
+		if ( super.getID() < 10) {
+			sID = "C" + "0" + super.getID();
+		}
+		else {
+		sID = "S" + super.getID();
+		}
+		   return sID;
+		   }
+
 	public static void listplayers() {
 		int random;	
 

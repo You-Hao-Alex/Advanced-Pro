@@ -6,7 +6,7 @@ public class Driver {
 	static boolean start = false;
 	private boolean quit;
 	int ss;
-	
+	int gameid = 1;
 
 	
 	public void runGame() {
@@ -72,8 +72,15 @@ public class Driver {
 
 
 	private void startgame() {
-		// TODO Auto-generated method stub
+		//if predict or not? sport number?
+		Swimming newSwimming = new Swimming(gameid);
+		System.out.println("GameID: " + newSwimming.getsID());
+		System.out.println("Referee ID: " + newSwimming.getReferee());
+
+		// results
 		
+		
+		gameid = gameid +1;
 	}
 
 
@@ -144,5 +151,7 @@ public class Driver {
 			} while (gogo);
 			runGame();
 	}
+	
+	
 }
 

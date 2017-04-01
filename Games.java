@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Games {
 	private int ID;
 	private String Referee;
-	private ArrayList<String> players = new ArrayList<String>();
 	final public static int MinAth = 4;
 	final public static int MaxAth = 8;
 	
@@ -14,15 +13,20 @@ public class Games {
 	   }
 	
 	public String getReferee() {
-	      return Referee;
+		ArrayList Official = (ArrayList)new Data().getOfficial();
+		int a = (int) (Math.random()*(Official.size()));
+		Official s = (Official)Official.get(a);
+		return Referee = s.getID();
 	   }
-	
 
-	public Games (int ID, String Referee, ArrayList<String> players){
-		this.ID=ID;
-		this.Referee=Referee;
-		this.players=players;
+
+	public Games (int ID){
+		this.ID = ID;
+		Referee = getReferee();
 	}
+
+	
+	
 	public static int[] produceNum(int minNum, int maxNum, int numCount) {
 		if (numCount > (maxNum - minNum + 1) || maxNum < minNum) {
             return null;
@@ -62,7 +66,6 @@ public class Games {
                 count++;
             }
         }
-         
         return resultArr;
     }
 	public static void check (int x, int y){
@@ -75,17 +78,7 @@ public class Games {
 		}
 	}
 	
-	
-	
-	public static void list (int IDnum) {
-		String ID;
-		if ( IDnum < 10) {
-			ID = "S" + "0" + IDnum;
-		}
-		else {
-		ID = "S" + IDnum;
-		}
-		System.out.println("GameID is " + ID);
-	}
-	
+
+
+
 }
