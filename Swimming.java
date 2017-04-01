@@ -9,7 +9,6 @@ public class Swimming extends Games {
 	
 	public static void listplayers() {
 		int random;	
-
 		ArrayList Swimmers = (ArrayList)new Data().getSwimmers();
 		ArrayList SAthlete = (ArrayList)new Data().getSAthlete();
 		if (Swimmers.size() + SAthlete.size() < MaxAth){
@@ -23,21 +22,12 @@ public class Swimming extends Games {
         for (Integer num : resultArr) {
         	if (num>Swimmers.size()){
         		SuperAthletes s=(SuperAthletes)SAthlete.get(num-Swimmers.size()-1);
-
     			s.SuperAthletesInfo();
         	}
         	else{
         		Swimmers s=(Swimmers)Swimmers.get(num-1);
-
     			s.SwimmersInfo();
         	}
         }
 			  }
-
-	
-
-
-
-	
-
 }

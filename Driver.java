@@ -79,20 +79,21 @@ public class Driver {
 
 
 	private void athletelist() {
-		if (sportnum == 0) {
+		if (sportnum == 0 || start == false) {
 			System.out.println("Please select a game first!");
 			runGame();
 		}
 		else if (sportnum == 1) {
-			if (start = false){
-				System.out.println("Please select another game type");
-				runGame();
+			Swimming.listplayers();
+			System.out.println("Please enter the ID of the swimmer: ");
 			}
-			else{
-				Swimming.listplayers();
-				System.out.println("Please enter the ID of the Swimmer: ");
-			}
-			
+		else if (sportnum == 2){
+			Cycling.listplayers();
+			System.out.println("Please enter the ID of the cyslist: ");
+		}
+		else if (sportnum == 3){
+			Running.listplayers();
+			System.out.println("Please enter the ID of the sprinter: ");
 		}
 	}
 
