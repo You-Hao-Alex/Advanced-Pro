@@ -26,27 +26,26 @@ public class Swimming extends Games {
 		int random;
 		int i = -1;
 		String[] playerID = new String[8];
-		ArrayList Swimmers = (ArrayList)new Data().getSwimmers();
-		ArrayList SAthlete = (ArrayList)new Data().getSAthlete();
-		if (Swimmers.size() + SAthlete.size() < MaxAth){
-			random = (int)(MinAth+Math.random()*(Swimmers.size()+SAthlete.size()-MinAth+1));
+
+		if (Driver.Swimmers.size() + Driver.SuperAthletes.size() < MaxAth){
+			random = (int)(MinAth+Math.random()*(Driver.Swimmers.size()+Driver.SuperAthletes.size()-MinAth+1));
 		}
 		else {
 			random = (int)(MinAth+Math.random()*(MaxAth-MinAth+1));
 		}
 		
-		int[] resultArr = produceNum(1, Swimmers.size()+SAthlete.size()+1, random);
+		int[] resultArr = produceNum(1, Driver.Swimmers.size()+Driver.SuperAthletes.size()+1, random);
         for (Integer num : resultArr) {
         	i = i+1;
-        	if (num>Swimmers.size()){
-        		SuperAthletes s=(SuperAthletes)SAthlete.get(num-Swimmers.size()-1);
+        	if (num>Driver.Swimmers.size()){
+        		SuperAthletes s=(SuperAthletes)Driver.SuperAthletes.get(num-Driver.Swimmers.size()-1);
     			s.SuperAthletesInfo();
     			Driver.tempresult[i] = s.compete1(s.getID());
     			playerID[i] = s.getID();
     			Driver.tempname[i] = s.getName(); 
         	}
         	else{
-        		Swimmers s=(Swimmers)Swimmers.get(num-1);
+        		Swimmers s=(Swimmers)Driver.Swimmers.get(num-1);
     			s.SwimmersInfo();
     			Driver.tempresult[i] = s.compete(s.getID());
     			playerID[i] = s.getID();

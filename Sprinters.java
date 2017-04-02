@@ -1,40 +1,27 @@
- /**
-     * @date 01.4.2017
-     * @author Chih Yuan Chen
-     * @version 1.0
-     * @Description setting the role of Sprinters
-     */
+package Game;
+
 import java.util.Random;
 
 public class Sprinters extends Athletes{
 
-	public Sprinters(String id, String name, int age, String state,int point,int result) {
-		super(id, name, age, state, point,result);
+	public Sprinters(String id, String name, int age, String state,int point) {
+		super(id, name, age, state, point);
 		// TODO Auto-generated constructor stub
 	}
 	public void SprintersInfo (){
-		System.out.println("ID: " + this.getID());
-	      System.out.println("Name: " + this.getName());
-	      System.out.println("Age: " + this.getAge());
-	      System.out.println("State: " + this.getState());
-	}
-	public void SprintersResultInfo (){
-		  System.out.println("ID: " + this.getID());
-	      System.out.println("Name: " + this.getName());
-	      System.out.println("Age: " + this.getAge());
-	      System.out.println("State: " + this.getState());
-	      System.out.println("Result: " + this.getResult());
-	      System.out.println("Point: " + this.getPoint());
+		System.out.print("ID: " + this.getID());
+	    System.out.print(" Name: " + this.getName());
+	    System.out.print(" Age: " + this.getAge());
+	    System.out.print(" State: " + this.getState());
+	    System.out.println(" Point: " + this.getPoint());
 	}
 	@Override
-	public void compete() {
+	public int compete(String id) {
 		// TODO Auto-generated method stub
-		int r ;
-		int max=20;
+		 int max=20;
 	        int min=10;
 	        Random random = new Random();
-	        r = random.nextInt(max)%(max-min+1) + min;
-	        this.setResult(r);
+	       return result = random.nextInt(max)%(max-min+1) + min;
 	}
 
 }

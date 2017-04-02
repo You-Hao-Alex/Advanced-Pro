@@ -16,12 +16,12 @@ public class Cyclists extends Athletes {
 	    System.out.println(" Point: " + this.getPoint());
 	}
 	@Override
-	public void compete(int result) {
+	public int compete(String id) {
 		// TODO Auto-generated method stub
 		 int max=800;
 	        int min=500;
 	        Random random = new Random();
-	        result = random.nextInt(max)%(max-min+1) + min;
+	        return result = random.nextInt(max)%(max-min+1) + min;
 	}
 
 }

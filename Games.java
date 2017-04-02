@@ -24,11 +24,6 @@ public class Games {
 		return Referee = s.getName();
 	   }
 
-
-
-
-
-	
 	public static int[] produceNum(int minNum, int maxNum, int numCount) {
 		if (numCount > (maxNum - minNum + 1) || maxNum < minNum) {
             return null;
@@ -79,8 +74,4 @@ public class Games {
 			Driver.start = false;
 		}
 	}
-	
-
-
-
 }

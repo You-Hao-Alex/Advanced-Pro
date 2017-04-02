@@ -1,9 +1,5 @@
- /**
-     * @date 01.4.2017
-     * @author Chih Yuan Chen
-     * @version 1.0
-     * @Description setting the role of official 
-     */
+package Game;
+
 public class Official extends Participant{
 	   private String id;         
 	   private String name;   
@@ -15,5 +11,10 @@ public class Official extends Participant{
 		   setAge(age);
 		   setState(state);
 	   }
-	   
+	   public void OfficialInfo (){
+			System.out.print("ID: " + this.getID());
+		    System.out.print(" Name: " + this.getName());
+		    System.out.print(" Age: " + this.getAge());
+		    System.out.println(" State: " + this.getState());
+		}
 }

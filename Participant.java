@@ -1,16 +1,11 @@
- /**
-     * @date 01.4.2017
-     * @author Chih Yuan Chen
-     * @version 1.0
-     * @Description setting the role of participant
-     */
+package Game;
+
 
 public class Participant {
-	 private String id;         
+	 private  String id;         
 	   private String name;   
 	   private int age;  
 	   private String state;
-
 	
 	   public String getID() { return id; }
 	  
@@ -19,8 +14,6 @@ public class Participant {
 	   public int getAge() { return age; }
 	   
 	   public String getState() { return state; }
-	   
-
 	  
 	   public void setID(String id) { this.id = id; }
 	 
@@ -29,8 +22,6 @@ public class Participant {
 	   public void setAge(int age) { this.age =age; }
 	   
 	   public void setState(String state) { this.state = state; }
-	   
-
 	   
 	   public void personInfo() {
 	      System.out.println("ID: " + id);

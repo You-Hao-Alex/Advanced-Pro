@@ -5,7 +5,7 @@ public class Driver {
 	int sportnum = 0;
 	int gameid = 1;
 	String preID;
-	boolean abcd = false;
+	boolean prediction = false;
 	static boolean start = false;
 	Scanner reader = new Scanner(System.in);
 	String tempGameID;
@@ -13,6 +13,11 @@ public class Driver {
 	static String[] tempid = new String[8];
 	static String[] tempname = new String[8];
 	static int[] tempresult = new int[8];
+	static int[] temprank = new int[8];
+	static ArrayList Swimmers = (ArrayList)new Data().getSwimmers();
+	static ArrayList Cyclists = (ArrayList)new Data().getCyclists();
+	static ArrayList Sprinters = (ArrayList)new Data().getSprinters();
+	static ArrayList SuperAthletes = (ArrayList)new Data().getSAthlete();
 	
 	public void runGame() {
 		int choice;
@@ -60,8 +65,23 @@ public class Driver {
 	}
 			
 	private void dispoint() {
-		// TODO Auto-generated method stub
-		
+		for(int i=0;i<Swimmers.size();i++){
+			Swimmers s = (Swimmers)Swimmers.get(i);
+			s.SwimmersInfo();
+		}
+		for(int i=0;i<Cyclists.size();i++){
+			Cyclists s = (Cyclists)Cyclists.get(i);
+			s.CyclistsInfo();
+		}
+		for(int i=0;i<Sprinters.size();i++){
+			Sprinters s = (Sprinters)Sprinters.get(i);
+			s.SprintersInfo();
+		}
+		for(int i=0;i<SuperAthletes.size();i++){
+			SuperAthletes s = (SuperAthletes)SuperAthletes.get(i);
+			s.SuperAthletesInfo();
+		}
+		runGame();
 	}
 
 
@@ -74,40 +94,35 @@ public class Driver {
 
 
 	private void startgame() {
-		if (abcd==true){
+		if (prediction==true){
 			if (sportnum == 1){
 				Swimming newSwimming = new Swimming(gameid);
 				tempGameID = newSwimming.getsID();
 				tempreferee = newSwimming.getReferee();
-				System.out.println("GameID: " + tempGameID);
-				System.out.println("Referee: " + tempreferee);
 			}
 			else if (sportnum == 2){
 				Cycling newCycling = new Cycling(gameid);
 				tempGameID = newCycling.getsID();
 				tempreferee = newCycling.getReferee();
-				System.out.println("GameID: " + tempGameID);
-				System.out.println("Referee: " + tempreferee);
 			}
 			else {
 				Running newRunning = new Running(gameid);
 				tempGameID = newRunning.getsID();
 				tempreferee = newRunning.getReferee();
-				System.out.println("GameID: " + tempGameID);
-				System.out.println("Referee: " + tempreferee);
 			}
+			System.out.println("GameID: " + tempGameID);
+			System.out.println("Referee: " + tempreferee);
 			for (int i=0; i<tempid.length; i++){
 				if (tempresult[i] !=0){
-				System.out.println(tempid[i]+" "+ tempname[i] + " "+ tempresult[i]);
-				System.out.println(tempGameID+tempreferee);
-				tempresult[i] = 0;
+					temprank[i] = rank(i);
+					System.out.println(tempid[i]+" "+ tempname[i] + " "+ tempresult[i]+" Rank: "+temprank[i]);
 				}
 			}
-			gameid = gameid +1;
-			sportnum = 0;
-			start = false;
-			abcd = false;
-			runGame();
+			congra();
+			addpoint1();
+			addpoint2();
+			addpoint3();
+			refresh();
 		}
 		else{
 			System.out.println("You need to select a game and predict a winner first!");
@@ -117,7 +132,145 @@ public class Driver {
 
 
 
+	private void congra() {
+		for (int i = 0; i<tempid.length; i++){
+			if (temprank[i]==1){
+				if (preID.equals(tempid[i])){
+					System.out.println("Congratulations! Your prediction is right!");
+				}
+			}
+		}
+		
+	}
+
+	private void addpoint1() {
+		String idid = null;
+		for (int i = 0; i<tempid.length; i++){
+			if (temprank[i]==1){
+				idid = tempid[i];
+			}
+		}
+					for(int j=0;j<Swimmers.size();j++){
+						Swimmers a = (Swimmers)Swimmers.get(j);
+						if (a.getID().equals(idid)){
+							a.setpoint(5);
+						}
+					}
+					for(int j=0;j<Cyclists.size();j++){
+					Cyclists s = (Cyclists)Cyclists.get(j);
+						if (s.getID().equals(idid)) {
+							s.setpoint(5);
+						}
+					}
+						for(int j=0;j<Sprinters.size();j++){
+						Sprinters d = (Sprinters)Sprinters.get(j);
+						
+						if (d.getID().equals(idid)){
+							d.setpoint(5);
+						}
+						}
+						for(int j=0;j<SuperAthletes.size();j++){
+						SuperAthletes f = (SuperAthletes)SuperAthletes.get(j);
+						if (f.getID().equals(idid)){
+							f.setpoint(5);
+						}
+			}	
+	}
+	
+	private void addpoint2() {
+		String idid = null;
+		for (int i = 0; i<tempid.length; i++){
+			if (temprank[i]==2){
+				idid = tempid[i];
+			}
+		}
+					for(int j=0;j<Swimmers.size();j++){
+						Swimmers a = (Swimmers)Swimmers.get(j);
+						if (a.getID().equals(idid)){
+							a.setpoint(2);
+						}
+					}
+					for(int j=0;j<Cyclists.size();j++){
+					Cyclists s = (Cyclists)Cyclists.get(j);
+						if (s.getID().equals(idid)) {
+							s.setpoint(2);
+						}
+					}
+						for(int j=0;j<Sprinters.size();j++){
+						Sprinters d = (Sprinters)Sprinters.get(j);
+						
+						if (d.getID().equals(idid)){
+							d.setpoint(2);
+						}
+						}
+						for(int j=0;j<SuperAthletes.size();j++){
+						SuperAthletes f = (SuperAthletes)SuperAthletes.get(j);
+						if (f.getID().equals(idid)){
+							f.setpoint(2);
+						}
+			}	
+	}
+	
+	private void addpoint3() {
+		String idid = null;
+		for (int i = 0; i<tempid.length; i++){
+			if (temprank[i]==3){
+				idid = tempid[i];
+			}
+		}
+					for(int j=0;j<Swimmers.size();j++){
+						Swimmers a = (Swimmers)Swimmers.get(j);
+						if (a.getID().equals(idid)){
+							a.setpoint(1);
+						}
+					}
+					for(int j=0;j<Cyclists.size();j++){
+					Cyclists s = (Cyclists)Cyclists.get(j);
+						if (s.getID().equals(idid)) {
+							s.setpoint(1);
+						}
+					}
+						for(int j=0;j<Sprinters.size();j++){
+						Sprinters d = (Sprinters)Sprinters.get(j);
+						
+						if (d.getID().equals(idid)){
+							d.setpoint(1);
+						}
+						}
+						for(int j=0;j<SuperAthletes.size();j++){
+						SuperAthletes f = (SuperAthletes)SuperAthletes.get(j);
+						if (f.getID().equals(idid)){
+							f.setpoint(1);
+						}
+			}	
+	}
+
+	private void refresh() {
+		gameid = gameid +1;
+		sportnum = 0;
+		start = false;
+		prediction = false;
+		for (int i=0;i<tempresult.length;i++){
+			tempresult[i] = 0;
+			temprank[i]=0;
+		}
+		runGame();
+	}
+
+	private int rank(int number) {
+		int rank = 1;
+		for (int i=0; i<tempid.length; i++){
+			if (tempresult[number]>tempresult[i] && tempresult[i] != 0){
+				rank = rank+1;
+			}
+		}
+		return rank;
+	}
+
 	private void predict() {
+		for (int i=0;i<tempresult.length;i++){
+			tempresult[i] = 0;
+		}
 		if (sportnum == 0 || start == false) {
 			System.out.println("Please select a game first!");
 			runGame();
@@ -129,10 +282,10 @@ public class Driver {
 			preID = reader.next();
 				for(int i = 0;i<tempid.length;i++){
 					if (preID.equals(tempid[i])){
-						abcd = true;
+						prediction = true;
 					}
 				}
-			}while(abcd == false);
+			}while(prediction == false);
 			System.out.println("Your prediction is: "+ preID);
 			runGame();
 			}	
@@ -143,10 +296,10 @@ public class Driver {
 			preID = reader.next();
 				for(int i = 0;i<tempid.length;i++){
 					if (preID.equals(tempid[i])){
-						abcd = true;
+						prediction = true;
 					}
 				}
-			}while(abcd == false);
+			}while(prediction == false);
 			System.out.println("Your prediction is: "+ preID);
 			runGame();
 			}	
@@ -157,10 +310,10 @@ public class Driver {
 			preID = reader.next();
 				for(int i = 0;i<tempid.length;i++){
 					if (preID.equals(tempid[i])){
-						abcd = true;
+						prediction = true;
 					}
 				}
-			}while(abcd == false);
+			}while(prediction == false);
 			System.out.println("Your prediction is: "+ preID);
 			runGame();
 			}	
