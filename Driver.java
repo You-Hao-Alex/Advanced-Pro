@@ -3,15 +3,20 @@ import java.util.*;
 
 public class Driver {
 	int sportnum = 0;
-	static boolean start = false;
-	private boolean quit;
-	int ss;
 	int gameid = 1;
-
+	String preID;
+	boolean abcd = false;
+	static boolean start = false;
+	Scanner reader = new Scanner(System.in);
+	String tempGameID;
+	String tempreferee;
+	static String[] tempid = new String[8];
+	static String[] tempname = new String[8];
+	static int[] tempresult = new int[8];
 	
 	public void runGame() {
-		Scanner reader = new Scanner(System.in);
 		int choice;
+		boolean quit = false;
 		boolean go = true;
 		do{
 			AllMenu.menu();
@@ -27,7 +32,7 @@ public class Driver {
 						gametype();
 						break;
 					case 2:
-						athletelist();
+						predict();
 						break;
 					case 3:
 						startgame();
@@ -38,7 +43,6 @@ public class Driver {
 					case 5:
 						dispoint();
 					case 6:
-						quit = false;
 						System.out.println("Goodbye!");
 						break;
 					default:
@@ -52,11 +56,9 @@ public class Driver {
 		            reader.nextLine();		       
 		        }
 			} while (go);
-		} while(quit);
+		} while (quit);
 	}
 			
-
-
 	private void dispoint() {
 		// TODO Auto-generated method stub
 		
@@ -72,47 +74,109 @@ public class Driver {
 
 
 	private void startgame() {
-		//if predict or not? sport number?
-		Swimming newSwimming = new Swimming(gameid);
-		System.out.println("GameID: " + newSwimming.getsID());
-		System.out.println("Referee ID: " + newSwimming.getReferee());
-
-		// results
-		
-		
-		gameid = gameid +1;
+		if (abcd==true){
+			if (sportnum == 1){
+				Swimming newSwimming = new Swimming(gameid);
+				tempGameID = newSwimming.getsID();
+				tempreferee = newSwimming.getReferee();
+				System.out.println("GameID: " + tempGameID);
+				System.out.println("Referee: " + tempreferee);
+			}
+			else if (sportnum == 2){
+				Cycling newCycling = new Cycling(gameid);
+				tempGameID = newCycling.getsID();
+				tempreferee = newCycling.getReferee();
+				System.out.println("GameID: " + tempGameID);
+				System.out.println("Referee: " + tempreferee);
+			}
+			else {
+				Running newRunning = new Running(gameid);
+				tempGameID = newRunning.getsID();
+				tempreferee = newRunning.getReferee();
+				System.out.println("GameID: " + tempGameID);
+				System.out.println("Referee: " + tempreferee);
+			}
+			for (int i=0; i<tempid.length; i++){
+				if (tempresult[i] !=0){
+				System.out.println(tempid[i]+" "+ tempname[i] + " "+ tempresult[i]);
+				System.out.println(tempGameID+tempreferee);
+				tempresult[i] = 0;
+				}
+			}
+			gameid = gameid +1;
+			sportnum = 0;
+			start = false;
+			abcd = false;
+			runGame();
+		}
+		else{
+			System.out.println("You need to select a game and predict a winner first!");
+			runGame();
+		}
 	}
 
 
 
-	private void athletelist() {
+	private void predict() {
 		if (sportnum == 0 || start == false) {
 			System.out.println("Please select a game first!");
 			runGame();
 		}
 		else if (sportnum == 1) {
-			Swimming.listplayers();
+			tempid = Swimming.listplayers();
+			do{
 			System.out.println("Please enter the ID of the swimmer: ");
-			}
+			preID = reader.next();
+				for(int i = 0;i<tempid.length;i++){
+					if (preID.equals(tempid[i])){
+						abcd = true;
+					}
+				}
+			}while(abcd == false);
+			System.out.println("Your prediction is: "+ preID);
+			runGame();
+			}	
 		else if (sportnum == 2){
-			Cycling.listplayers();
-			System.out.println("Please enter the ID of the cyslist: ");
-		}
+			tempid = Cycling.listplayers();
+			do{
+			System.out.println("Please enter the ID of the cyclist: ");
+			preID = reader.next();
+				for(int i = 0;i<tempid.length;i++){
+					if (preID.equals(tempid[i])){
+						abcd = true;
+					}
+				}
+			}while(abcd == false);
+			System.out.println("Your prediction is: "+ preID);
+			runGame();
+			}	
 		else if (sportnum == 3){
-			Running.listplayers();
+			tempid = Running.listplayers();
+			do{
 			System.out.println("Please enter the ID of the sprinter: ");
-		}
+			preID = reader.next();
+				for(int i = 0;i<tempid.length;i++){
+					if (preID.equals(tempid[i])){
+						abcd = true;
+					}
+				}
+			}while(abcd == false);
+			System.out.println("Your prediction is: "+ preID);
+			runGame();
+			}	
 	}
 
 
 	private void gametype() {
-		Scanner reader = new Scanner(System.in);
 		boolean gogo = true;
 		List<Swimmers> Swimmers = new Data().getSwimmers();
 		List<Cyclists> Cyclists = new Data().getCyclists();
 		List<Sprinters> Sprinters = new Data().getSprinters();
 		List<SuperAthletes> SAthlete = new Data().getSAthlete();
 			AllMenu.gamemenu();
+			for (int i=0;i<tempresult.length;i++){
+				tempresult[i] = 0;
+			}
 			do {
 		        try {
 		            int selection = reader.nextInt();
@@ -151,7 +215,5 @@ public class Driver {
 			} while (gogo);
 			runGame();
 	}
-	
-	
 }
 

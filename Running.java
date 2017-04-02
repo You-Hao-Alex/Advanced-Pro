@@ -21,9 +21,10 @@ public class Running extends Games{
 		   return sID;
 		   }
 
-	public static void listplayers() {
+	public static String[] listplayers() {
 		int random;	
-
+		int i = -1;
+		String[] playerID = new String[8];
 		ArrayList Sprinters = (ArrayList)new Data().getSprinters();
 		ArrayList SAthlete = (ArrayList)new Data().getSAthlete();
 		if (Sprinters.size() + SAthlete.size() < MaxAth){
@@ -35,16 +36,22 @@ public class Running extends Games{
 		
 		int[] resultArr = produceNum(1, Sprinters.size()+SAthlete.size()+1, random);
         for (Integer num : resultArr) {
+        	i = i+1;
         	if (num>Sprinters.size()){
         		SuperAthletes s=(SuperAthletes)SAthlete.get(num-Sprinters.size()-1);
-
     			s.SuperAthletesInfo();
+    			Driver.tempresult[i] = s.compete3(s.getID());
+    			playerID[i] = s.getID();
+    			Driver.tempname[i] = s.getName(); 
         	}
         	else{
         		Sprinters s=(Sprinters)Sprinters.get(num-1);
-
     			s.SprintersInfo();
+    			Driver.tempresult[i] = s.compete(s.getID());
+    			playerID[i] = s.getID();
+    			Driver.tempname[i] = s.getName(); 
         	}
         }
+        return playerID;
 	}
 }

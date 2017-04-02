@@ -8,6 +8,11 @@ public class Games {
 	final public static int MinAth = 4;
 	final public static int MaxAth = 8;
 	
+	public Games (int ID){
+		this.ID = ID;
+		Referee = getReferee();
+	}
+	
 	public int getID() {
 	   return ID;
 	   }
@@ -16,16 +21,13 @@ public class Games {
 		ArrayList Official = (ArrayList)new Data().getOfficial();
 		int a = (int) (Math.random()*(Official.size()));
 		Official s = (Official)Official.get(a);
-		return Referee = s.getID();
+		return Referee = s.getName();
 	   }
 
 
-	public Games (int ID){
-		this.ID = ID;
-		Referee = getReferee();
-	}
 
-	
+
+
 	
 	public static int[] produceNum(int minNum, int maxNum, int numCount) {
 		if (numCount > (maxNum - minNum + 1) || maxNum < minNum) {
