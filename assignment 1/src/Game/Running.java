@@ -20,7 +20,7 @@ public class Running extends Games{
 		Referee = getReferee();
 		PlayerID = getsID();
 	}
-	//constructor of getting gameID
+	//constructor of getting PlayerID
 	public String getsID() {
 		if ( super.getID() < 10) {
 			PlayerID = "S" + "0" + super.getID();

@@ -64,9 +64,10 @@ public class Driver {
 						displayresult();
 						break;
 					case 5:
-						dispoint();
+						displaypoint();
 					case 6:
 						System.out.println("Goodbye!");
+						System.exit(0);
 						break;
 					default:
 						System.out.println("Please enter your choice: ");
@@ -83,7 +84,7 @@ public class Driver {
 		} while (quit);
 	}
 			
-	private void dispoint() {
+	private void displaypoint() {
 		//display the points of all athletes
 		for(int i=0;i<Swimmers.size();i++){
 			Swimmers s = (Swimmers)Swimmers.get(i);

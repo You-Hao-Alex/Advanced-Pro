@@ -26,7 +26,7 @@ public class Cycling extends Games{
 		PlayerID = getsID();
 	}
 	
-	//constructor of getting gameID
+	//constructor of getting playerID
 	public String getsID() {
 		if ( super.getID() < 10) {
 			PlayerID = "C" + "0" + super.getID();
