@@ -54,7 +54,11 @@ public class Data {
 		Official.add(new Official("Re02","Smith",20,"Vic"));
 		Official.add(new Official("Re03","Noah",22,"Vic"));
 		 return Official;
-	     }	
+	     }
+	public List<History> getHistory() {
+		List<History> History = new ArrayList<History>();
+		
+		return History;
+	    }
+	}
 
-	
-}

@@ -1,6 +1,5 @@
 package Game;
 
-import java.util.ArrayList;
 
 public class Games {
 	private int ID;
@@ -18,9 +17,8 @@ public class Games {
 	   }
 	
 	public String getReferee() {
-		ArrayList Official = (ArrayList)new Data().getOfficial();
-		int a = (int) (Math.random()*(Official.size()));
-		Official s = (Official)Official.get(a);
+		int a = (int) (Math.random()*(Driver.Official.size()));
+		Official s = (Official)Driver.Official.get(a);
 		return Referee = s.getName();
 	   }
 
