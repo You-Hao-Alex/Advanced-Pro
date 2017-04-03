@@ -58,6 +58,7 @@ public class Driver {
 						dispoint();
 					case 6:
 						System.out.println("Goodbye!");
+						System.exit(0);
 						break;
 					default:
 						System.out.println("Please enter your choice: ");
@@ -94,8 +95,6 @@ public class Driver {
 		}//display super athletes' point
 		runGame();
 	}
-
-
 
 	private void disresult() {
 		//display the final results of all games
@@ -165,7 +164,6 @@ public class Driver {
 		History.add(new History(tempGameID,tempreferee,tempid,tempname,tre,tra));
 	}
 		
-
 	private void congra() {
 		//display a congratulation message if the user's prediction is correct
 		for (int i = 0; i<tempid.length; i++){
